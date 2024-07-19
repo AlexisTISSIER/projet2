@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const chatbotController = require('./chatbotController');
 
-// Exemple de route pour recevoir des messages du chatbot
-router.post('/message', (req, res) => {
-  const userMessage = req.body.message;
-  // Logique pour traiter le message et déterminer la réponse
-  const botResponse = 'Ceci est une réponse du chatbot.';
-  res.json({ message: botResponse });
-});
+// Utilisez le contrôleur pour la route /api/chatbot
+router.post('/api/chatbot', chatbotController.postMessage);
 
 module.exports = router;

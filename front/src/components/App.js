@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import { fetchChatbotResponse } from '../api/chatbotApi';
+import './app.css';
+
+const Message = ({ sender, message }) => (
+    <div className={sender}>
+        <strong>{sender === 'user' ? 'You' : 'AI'}: </strong>
+        <span>{message}</span>
+    </div>
+);
 
 const App = () => {
     const [userMessage, setUserMessage] = useState('');
@@ -13,7 +21,6 @@ const App = () => {
         e.preventDefault();
         if (userMessage.trim() === '') return;
 
-        // Add user message to chat history
         const newChatHistory = [...chatHistory, { sender: 'user', message: userMessage }];
         setChatHistory(newChatHistory);
 
@@ -24,19 +31,15 @@ const App = () => {
             setChatHistory([...newChatHistory, { sender: 'ai', message: 'Failed to fetch response' }]);
         }
 
-        // Clear the input field
         setUserMessage('');
     };
 
     return (
         <div>
-            <h1>Chat with AI</h1>
+            <h1>CypherBot</h1>
             <div className="chat-history">
                 {chatHistory.map((chat, index) => (
-                    <div key={index} className={chat.sender}>
-                        <strong>{chat.sender === 'user' ? 'You' : 'AI'}: </strong>
-                        <span>{chat.message}</span>
-                    </div>
+                    <Message key={index} {...chat} /> // Note: Idéalement, utilisez un identifiant unique au lieu de l'index
                 ))}
             </div>
             <form onSubmit={handleSubmit}>
@@ -44,9 +47,11 @@ const App = () => {
                     type="text"
                     value={userMessage}
                     onChange={handleInputChange}
-                    placeholder="Type your message..."
+                    placeholder="Tap Tap Tap Tap..."
+                    aria-label="Type your message here"
+                    autoFocus
                 />
-                <button type="submit">Send</button>
+                <button type="submit">Envoyer</button>
             </form>
         </div>
     );

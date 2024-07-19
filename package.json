@@ -1,0 +1,17 @@
+{
+    "name": "mon-projet",
+    "scripts": {
+        "start": "concurrently \"npm run start:back\" \"npm run start:front\"",
+        "start:back": "cd back && npm start",
+        "start:front": "cd front && npm start",
+        "install:dependencies": "cd back && npm install && cd ../front && npm install"
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2"
+    }
+}

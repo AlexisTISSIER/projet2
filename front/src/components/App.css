@@ -1,33 +1,94 @@
-.chat-history {
-    border: 1px solid #ddd;
-    padding: 10px;
+body {
+    font-family: Arial, sans-serif; /* Utilisation d'une police de secours */
+    background-color: #f4f4f9; /* Couleur de fond douce */
+    margin: 0; /* Suppression des marges par défaut */
+    padding: 0; /* Suppression des paddings par défaut */
+    display: row; /* Utilisation de Flexbox pour le centrage */
+    justify-content: center; /* Centrage horizontal */
+    align-items: center; /* Centrage vertical */
+    height: 100vh; /* Hauteur totale de la fenêtre */
+}
+
+/* Styles spécifiques au conteneur principal */
+#root {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles des divs pour les rendre visuellement agréables */
+div {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px; /* Bordures arrondies */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    width: 400px; /* Largeur fixe */
+    max-width: 90%; /* Adaptabilité sur petits écrans */
+}
+
+/* Titre centralisé avec marges et couleur */
+h1 {
+    text-align: center;
+    color: #333;
     margin-bottom: 20px;
-    height: 300px;
-    overflow-y: scroll;
 }
 
-.chat-history .user {
-    text-align: right;
-    color: blue;
+/* Zone d'historique de chat avec défilement */
+.chat-history {
+    max-height: 400px;
+    overflow-y: auto; /* Activation du défilement vertical */
+    margin-bottom: 20px;
+    padding-right: 10px; /* Espace pour le scrollbar */
 }
 
-.chat-history .ai {
-    text-align: left;
-    color: green;
+/* Styles des messages dans l'historique */
+.chat-history > div {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
+/* Couleurs spécifiques pour l'utilisateur et l'AI */
+.user {
+    background-color: #e1f5fe; /* Bleu clair pour l'utilisateur */
+    text-align: right; /* Texte aligné à droite */
+}
+
+.ai {
+    background-color: #fce4ec; /* Rose clair pour l'AI */
+    text-align: left; /* Texte aligné à gauche */
+}
+
+/* Style du formulaire avec espacement entre les éléments */
 form {
     display: flex;
+    justify-content: space-between;
 }
 
+/* Champ de texte adaptatif avec bordures et marges */
 input[type="text"] {
-    flex: 1;
+    flex: 1; /* Prend tout l'espace disponible */
     padding: 10px;
-    font-size: 16px;
+    border: 1px solid #ccc; /* Bordure discrète */
+    border-radius: 5px; /* Bordures arrondies */
+    margin-right: 10px; /* Espace entre le champ et le bouton */
 }
 
+/* Bouton avec effet de survol */
 button {
-    padding: 10px;
-    font-size: 16px;
-    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Bleu Bootstrap */
+    color: #fff; /* Texte blanc */
+    border: none; /* Suppression de la bordure */
+    border-radius: 5px; /* Bordures arrondies */
+    cursor: pointer; /* Curseur pointeur */
+    transition: background-color 0.3s ease; /* Transition douce */
 }
+
+button:hover {
+    background-color: #0056b3; /* Bleu plus foncé au survol */
+}
+
